@@ -1,0 +1,1467 @@
+/*
+ * Login: xpolia05
+ *
+ * Doplnte sve reseni.
+ *
+ * Nezapomente pridat strucne hromadne komentare pro pravidla jednotlivych sekci
+ * a pro netrivialni useky kodu.
+ *
+ * Snazte se dodat aspon castecne reseni, i snaha se hodnoti.
+ */
+
+@font-face {
+    font-family: 'Textile';
+    src: url("/fonts/textile.ttf") format("truetype");
+}
+
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Spectral', serif;
+    color: #333333;
+    margin: 0;
+    background-image: url("../img/bg/bg-body.svg");
+    overflow-x: hidden;
+    min-width: 768px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+section {
+    padding-top: 100px;
+    padding-bottom: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.heading {
+    margin-bottom: 20px;
+}
+
+.heading h2 {
+    margin: 0;
+    font-family: 'Calistoga', sans-serif;
+    font-size: medium;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+}
+
+.heading span {
+    font-family: 'Textile', sans-serif;
+    text-transform: initial;
+    letter-spacing: initial;
+    font-size: 24px;
+}
+
+
+#header-menu, #about, #events, #services, footer {
+    background: white;
+    border-left: 1px dashed green;
+    border-right: 1px dashed green;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+#about::after, #team::after, #menu::after, #menu::before, #services::after, #contact::after {
+    content: "";
+    position: absolute;
+    bottom: -7.5%;
+    width: 110vw;
+    height: 120px;
+    background: url('../img/custom/hr.svg') center;
+    background-size: cover;
+    z-index: 1000;
+
+}
+
+#menu::before {
+    top: -5%;
+}
+
+#menu::after {
+    bottom: -2.5%;
+}
+
+#contact::after {
+    bottom: -4.5%
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  REFERENCES
+
+    -------------------------------------------------------------------------------------------------------
+*/
+.references ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.references ul li {
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+.references a {
+    font-size: 20px;
+    color: green;
+    text-decoration: none;
+    visibility: hidden;
+    transition: text-shadow 0.5s ease;
+}
+
+.references a::before {
+    font-family: FontAwesome, sans-serif;
+    content: "\f005"; /* star */
+    visibility: visible;
+}
+
+.references a:hover::before {
+    text-shadow: 0 0 8px green;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  HEADER
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#header-title {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../img/bg/bg-header.jpg");
+    height: 100vh;
+    width: 100%;
+    font-family: 'Calistoga', sans-serif;
+    color: white;
+    text-shadow: 0 0 20px rgba(0, 128, 0, 1);
+    position: relative;
+
+    /* parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#header-title span {
+    position: relative;
+    display: block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+html.scrolled #header-title span {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: none;
+}
+
+html:not(.scrolled) #header-title span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#header-title span:first-child{
+    text-transform: uppercase;
+    font-size: 15vh;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: -15%;
+    transition-delay: 0.1s;
+}
+
+#header-title span:nth-child(2){
+    text-transform: uppercase;
+    font-size: 8vh;
+    font-weight: bold;
+    line-height: 1;
+    transition-delay: 0.2s;
+}
+
+/* Adds decorative flags before and after the second span */
+#header-title span:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    left: -30%;
+    width: 100px;
+    height: 11vh;
+    background-image: url("../img/custom/flag.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#header-title span:nth-child(2)::after {
+    content: "";
+    position: absolute;
+    right: -30%;
+    width: 100px;
+    height: 11vh;
+    background-image: url("../img/custom/flag.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: scaleX(-1);
+}
+
+#header-title span:nth-child(3){
+    text-transform: uppercase;
+    font-size: 2.5vh;
+    transition-delay: 0.3s;
+}
+
+#header-title span:last-child{
+    font-family: 'Textile', sans-serif;
+    font-size: 4.5vh;
+    margin-top: 5px;
+    transition-delay: 0.4s;
+}
+
+/* Adds quotes before and after the last text */
+#header-title span:last-child::before{
+    content: "\201C";
+    text-shadow: 0 0 20px rgba(0, 128, 0, 1);
+}
+
+#header-title span:last-child::after{
+    content: "\201D";
+    text-shadow: 0 0 20px rgba(0, 128, 0, 1);
+}
+
+/* Adds a border image of beers after the header-title section */
+#header-title::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -100px;
+    width: 100%;
+    height: 40%;
+    background: url('../img/custom/beers.png') no-repeat center;
+    background-size: cover;
+    z-index: 1000;
+}
+
+#header-menu {
+    order: 2;
+    padding-top: 100px;
+}
+
+/* Styles the navbar, using a grid - intentionally having one more column for the leaf icon */
+#header-menu nav ul {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-top: 1px dashed green;
+    border-bottom: 1px dashed green;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 0;
+}
+
+#header-menu nav ul li {
+    list-style: none;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size: medium;
+}
+
+#header-menu nav ul li:nth-child(4) {
+    grid-column-start: 5;
+}
+
+#header-menu nav ul li:nth-child(5) {
+    grid-column-start: 6;
+}
+
+#header-menu nav ul li:nth-child(6) {
+    grid-column-start: 7;
+}
+
+/* Adds the leaf image in the middle of navbar */
+#header-menu nav ul li:nth-child(3)::after {
+    content: '';
+    background-image: url('../img/custom/leaf.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+    position: absolute;
+    height: 30%;
+    width: 40%;
+    transform: translate(-7.5%, -100%) scaleX(-1) rotate(-90deg);
+}
+
+#header-menu nav ul li a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    text-shadow: 0 0 1px #333333; /* creates the "bolder than bold" effect on the text */
+    color: #333333;
+    padding: 15px;
+    display: block;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  ABOUT
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#about .heading h2 {
+    color: green;
+}
+
+#about .heading span {
+    color: #333333;
+}
+
+#about {
+    position: relative;
+    margin: 0 auto;
+}
+
+#about > .name, #about > .references {
+    text-align: right;
+    width: 60%;
+}
+#about > .name {
+    font-size: 20px;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+#about > .references ul {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#about .video-player {
+    position: relative;
+    width: 60%;
+    text-shadow: 0 1px 5px white,
+    1px 0 5px white;
+}
+
+/* Adds the drink image to the about section */
+#about .video-player::before {
+    content: "";
+    position: absolute;
+    left: -25%;
+    top: 55%;
+    width: 150px;
+    height: 400px;
+    background: url('../img/custom/sprites.svg') no-repeat;
+    background-size: auto;
+    background-position-x: -450px;
+    z-index: 10;
+    transform: rotate(-45deg);
+}
+
+#about .video-player::after {
+    content: "";
+    position: absolute;
+    left: 102%;
+    top: -50%;
+    width: 150px;
+    height: 400px;
+    background: url('../img/custom/sprites.svg') no-repeat;
+    background-size: auto;
+    background-position-x: 0;
+    z-index: 10;
+    transform: rotate(-45deg);
+}
+
+#about .video-player .video-content {
+    width: 100%;
+    height: 0;
+    padding-bottom: 55%; /* it just works :) */
+}
+
+#about .video-player video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Styles the video player controls, using a grid */
+#about .video-player .video-controls {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: grid;
+    grid-template-areas:
+      "playpause mute time empty fullscreen"
+      "progress progress progress progress progress";
+    grid-template-columns: 5% 5% 5% 80% 5%;
+    font-size: 20px;
+}
+
+#about .video-player .video-controls .progress {
+    grid-area: progress;
+    width: 100%;
+    height: 10px;
+    border: none;
+    opacity: 0.3;
+}
+
+#about .video-player .video-controls .progress::-webkit-progress-bar {
+    background-color: #ddd;
+}
+
+#about .video-player .video-controls .progress::-webkit-progress-value,
+#about .video-player .video-controls .progress::-moz-progress-bar,
+#about .video-player .video-controls .progress::-ms-fill {
+    background-color: green;
+}
+
+#about .video-player .video-controls button {
+    font-size: 20px;
+    text-shadow: 0 1px 5px white,
+    1px 0 5px white;
+    color: green;
+    visibility: hidden;
+}
+
+#about .video-player .video-controls .playpause {
+    grid-area: playpause;
+    margin-left: 5px;
+}
+
+/* Button for Icon swap */
+#about .video-player .video-controls .playpause::before {
+    font-family: FontAwesome, sans-serif;
+    content: "\f04b";
+    visibility: visible;
+}
+
+#about .video-player .video-controls .mute {
+    grid-area: mute;
+    margin-left: 10px;
+}
+
+/* Button for Icon swap */
+#about .video-player .video-controls .mute::before {
+    font-family: FontAwesome, sans-serif;
+    content: "\f028";
+    visibility: visible;
+}
+
+#about .video-player .video-controls .fullscreen {
+    grid-area: fullscreen;
+}
+
+/* Button for Icon swap */
+#about .video-player .video-controls .fullscreen::before {
+    font-family: FontAwesome, sans-serif;
+    content: "\f065";
+    visibility: visible;
+}
+
+#about .video-player .video-controls .time {
+    grid-area: time;
+    margin-left: 25px;
+    color: green;
+}
+
+/* progress bar timer */
+#about .video-player .video-popup {
+    color: green;
+    background-color: white;
+    opacity: 0.5;
+    border-radius: 10px;
+    border: 1px solid green;
+    padding: 3px;
+    box-shadow: 0 0 5px white;
+}
+
+#about .video-player.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+    background-color: black;
+}
+
+/* so the media doesnt stretch when fullscreened */
+#about .video-player.fullscreen video {
+    object-fit: contain;
+}
+
+/* Displays a large play icon when paused */
+#about .video-player[data-state="paused"] .video-content::before {
+    font-family: FontAwesome, sans-serif;
+    content: "\f04b";
+    font-size: 70px;
+    position: absolute;
+    color: green;
+    top: 40%;
+    left: 45%;
+    z-index: 3000;
+}
+
+/* fixed icon visibility when paused video */
+#about .video-player[data-state="paused"] .video-controls,
+#about .video-player:not([data-state="played"]) .video-controls {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+/* Hide controls when video is playing and not being hovered */
+#about .video-player[data-state="played"] .video-controls {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+/* Switches play/pause icon when played */
+#about .video-player[data-state="played"] .video-controls .playpause::before {
+    content: "\f04c";
+}
+
+/* Updates mute icon if muted */
+#about .video-player[data-mute="muted"] .video-controls .mute::before {
+    content: "\f6a9";
+}
+
+/* Show controls on hover */
+#about .video-player:hover .video-controls {
+    opacity: 1;
+    visibility: visible;
+}
+
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                    TEAM
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#team {
+    background-image: url("../img/bg/bg-team.jpg");
+    background-size: cover;
+    align-items: center;
+    position: relative;
+}
+
+#team .heading h2 {
+    color: lightgreen;
+}
+
+#team .heading span {
+    color: white;
+}
+
+/* Styles the team section using grid, changes the grid to 2x2 when below threshold */
+#team .section-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr) minmax(250px, 1fr));
+    grid-gap: 10px;
+    margin-top: 20px;
+}
+
+/* flex used for changing the order of the elements manually */
+#team .section-item {
+    background: white;
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.5s ease;
+}
+
+#team .section-item h3 {
+    order: 2;
+    text-shadow: 0 0 1px #000;
+    margin: 12px;
+
+}
+
+#team .section-item img {
+    order: 1;
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transform: scale(0.97);
+    transition: transform 0.5s ease;
+}
+
+#team .section-item p {
+    order: 4;
+    width: 80%;
+}
+
+#team .section-item .references {
+    order: 3;
+}
+
+#team .section-item:hover img {
+    transform: scale(1.0);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.5s ease-in-out;
+}
+
+#team .section-item:nth-child(odd):hover {
+    background-color: #cce6c2;
+}
+
+#team .section-item:nth-child(even):hover {
+    background-color: #f7ced3;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  EVENTS
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#events {
+    position: relative; /* to position leaf border and sprites */
+    z-index: 1;
+}
+
+/* adds sprites of drinks to the section */
+#events::before {
+    content: "";
+    position: absolute;
+    left: 80%;
+    top: 0;
+    width: 150px;
+    height: 400px;
+    background: url('../img/custom/sprites.svg') no-repeat;
+    background-size: auto;
+    background-position-x: -300px;
+    z-index: -1;
+    transform: rotate(-45deg);
+}
+
+#events::after {
+    content: "";
+    position: absolute;
+    left: 78%;
+    bottom: 0;
+    width: 150px;
+    height: 400px;
+    background: url('../img/custom/sprites.svg') no-repeat;
+    background-size: auto;
+    background-position-x: -150px;
+    z-index: -1;
+    transform: rotate(45deg);
+}
+
+#events .heading h2 {
+    color: green;
+}
+
+#events .heading span {
+    color: #333333;
+}
+
+/* splits the section into three equal rows using grid */
+#events .section-content{
+    display: grid;
+    grid-template-rows: auto auto auto;
+    max-width: 1200px;
+    margin: 10px;
+}
+
+/* splits each section item using grid */
+#events .section-item {
+    display: grid;
+    grid-template-areas: "img h3"
+                         "img prop"
+                         "img p";
+    grid-template-columns: 38% 62%;
+    grid-template-rows: 10% 10% 80%;
+    column-gap: 15px;
+    text-align: justify;
+    padding: 20px 0 20px 0;
+
+}
+
+/* inverts the grid for second item */
+#events .section-item:nth-child(even) {
+    grid-template-areas: "h3   img"
+                         "prop img"
+                         "p    img";
+    grid-template-columns: 60% 40% ;
+    grid-template-rows: 10% 10% 80%;
+}
+
+#events .section-item h3 {
+    margin: 0;
+    text-shadow: 0 0 2px #333333;
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+}
+
+#events .section-item:hover h3 {
+    color: green;
+    text-shadow: 0 0 2px green;
+}
+
+#events .section-item img {
+    width: 100%;
+    opacity: 0.8;
+    transform-origin: left center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#events .section-item:hover img {
+    transform: scale(1.03);
+    opacity: 1;
+}
+
+#events .section-item .events-props {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+#events .section-item .events-props .rating {
+    margin-right: 5px;
+}
+
+#events .section-item .events-props .references ul {
+    display: inline-flex;
+}
+
+#events .section-item img {
+    grid-area: img;
+}
+
+#events .section-item h3 {
+    grid-area: h3;
+}
+
+#events .section-item .events-props {
+    grid-area: prop;
+}
+
+#events .section-item p {
+    grid-area: p;
+    margin: 0;
+}
+
+#events .section-item:nth-child(even) {
+    border-top: 1px dotted #333333;
+    border-bottom: 1px dotted #333333;
+}
+
+#events .section-item:nth-child(even) h3 {
+    text-align: right;
+}
+
+#events .section-item:nth-child(even) .events-props {
+    justify-content: flex-end;
+}
+
+#events .section-item:nth-child(even) img {
+    transform-origin: right center;
+    width: 97%;
+    transition: transform 0.5s ease;
+}
+
+#events .section-item:nth-child(odd) p {
+    margin-right: 15px;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  MENU
+
+    -------------------------------------------------------------------------------------------------------
+*/
+
+/* i almost gave up because of this part :D */
+/* so anyways... i started blasting: */
+#menu {
+    background-image: url("../img/bg/bg-menu.jpg");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    position: relative;
+}
+
+#menu .heading h2 {
+    color: lightgreen;
+}
+
+#menu .heading span {
+    color: white;
+}
+
+/* uses grid to style the menu */
+#menu .section-content {
+    min-width: 768px;
+    max-width: 1200px;
+    display: grid;
+    border: 20px solid white;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+    grid-template-areas: "cat     cat    chimi  rum"
+                         "cake  charlie  chimi  rum"
+                         "cake  charlie  frank  frank"
+                         "mac     mac    frank  frank";
+    position: relative;
+
+}
+
+/* creates 'washed out' filter over the menu */
+#menu .section-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
+
+#menu .section-item img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+#menu .section-item .description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+}
+
+#menu .section-item:hover .description {
+    opacity: 1;
+}
+
+#menu .section-item .description a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.5s ease;
+}
+
+#menu .section-item .description a:hover {
+    color: green;
+}
+
+#menu .section-item .description span {
+    font-size: 2rem;
+    font-family: Spectral, sans-serif;
+}
+
+#menu .section-item .description span:before {
+    content : "$";
+}
+
+#menu .section-item:nth-child(1) {
+    grid-area: cat;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(1):hover .figures {
+    transform: scale(1);
+    border: 5px solid #cce6c2;
+}
+
+#menu .section-item:nth-child(1) .description {
+    order: 1;
+    background: #cce6c2;
+}
+
+#menu .section-item:hover {
+    opacity: 1;
+    color: black;
+}
+
+#menu .section-item:nth-child(1) .description::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    left: 23.5%;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-right: 20px solid #cce6c2;
+    border-bottom: 20px solid transparent;
+}
+
+#menu .section-item:nth-child(2) {
+    grid-area: cake;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(2) .description {
+    order: 1;
+    background: white;
+}
+
+#menu .section-item:nth-child(2) .description::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid white;
+}
+
+#menu .section-item:nth-child(2) .figures {
+    order: 2;
+}
+
+#menu .section-item:nth-child(2):hover .figures {
+    transform: scale(1);
+    border: 5px solid white;
+}
+
+#menu .section-item:nth-child(3) {
+    grid-area: frank;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(3) .description {
+    order: 1;
+    background: #cce6c2;
+}
+
+#menu .section-item:nth-child(3) .description::after {
+    content: "";
+    position: absolute;
+    top: 74%;
+    right: 25%;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 20px solid #cce6c2;
+}
+
+#menu .section-item:nth-child(3) .figures {
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(3):hover .figures {
+    transform: scale(1);
+    border: 5px solid #cce6c2;
+}
+
+#menu .section-item:nth-child(4) {
+    grid-area: charlie;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+
+#menu .section-item:nth-child(4) .description {
+    background:  #f7ced3;
+}
+
+#menu .section-item:nth-child(4) .description::after {
+    content: "";
+    position: absolute;
+    top: 48.5%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #f7ced3;
+}
+
+#menu .section-item:nth-child(4):hover .figures {
+    transform: scale(1);
+    border: 5px solid #f7ced3;
+}
+
+#menu .section-item:nth-child(5) {
+    grid-area: chimi;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(5) .description {
+    background: white;
+}
+
+#menu .section-item:nth-child(5) .description::after {
+    content: "";
+    position: absolute;
+    right: 35.5%;
+    top: 23.5%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid white;
+}
+
+#menu .section-item:nth-child(5):hover .figures {
+    transform: scale(1);
+    border: 5px solid white;
+}
+
+#menu .section-item:nth-child(6) {
+    grid-area: mac;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(6) .description {
+    order: 1;
+    background: #cce6c2;
+}
+
+#menu .section-item:nth-child(6) .description::after {
+    content: "";
+    position: absolute;
+    right: 73.5%;
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-left: 20px solid #cce6c2;
+    border-bottom: 20px solid transparent;
+}
+
+#menu .section-item:nth-child(6) .figures {
+    order: 2;
+}
+
+#menu .section-item:nth-child(6):hover .figures {
+    transform: scale(1);
+    border: 5px solid #cce6c2;
+}
+
+#menu .section-item:nth-child(7) {
+    grid-area: rum;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+#menu .section-item:nth-child(7) .figures {
+    order: 2;
+}
+
+#menu .section-item:nth-child(7) .description {
+    order: 1;
+    background: #f7ced3;
+}
+
+#menu .section-item:nth-child(7) .description::after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-top: 20px solid #f7ced3;
+    border-right: 20px solid transparent;
+}
+
+#menu .section-item:nth-child(7):hover .figures {
+    transform: scale(1);
+    border: 5px solid #f7ced3;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  SERVICES
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#services {
+    position: relative;
+}
+
+#services .heading {
+    margin-bottom: 80px;
+}
+
+#services .heading h2 {
+    color: green;
+}
+
+#services .heading span {
+    color: black;
+}
+
+/* splits the services table into two columns so i can place the image into the second */
+#services .section-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    color: white;
+    opacity: 0.9;
+    background: #333333;
+    box-shadow: 0 0 15px 30px #333333;
+    width: 90%;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    padding: 20px 0 20px 0;
+}
+
+/* the image on the right part of the services table */
+#services .section-content:after {
+    content: "";
+    background-image: url("../img/gang/heisenberg.jpg");
+    background-size: cover;
+    background-color: #333333;
+    background-blend-mode: lighten;
+    margin-left: 70px;
+    grid-column: 2;
+    transition: background-color 0.5s ease;
+}
+
+#services .section-content:hover {
+    background-color: black;
+    box-shadow: 0 0 15px 30px black;
+}
+
+#services .section-content:hover:after {
+    background-color: black;
+}
+
+#services .section-content table th {
+    display: none;
+}
+
+#services .section-content table td {
+    max-width: 60px;
+    padding: 10px;
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+
+#services .section-content table tr:hover td,
+#services .section-content table tr:hover td a{
+    color: lightgreen;
+    transform: scale(1.05);
+}
+
+#services .section-content td a {
+    text-decoration: none;
+    white-space: nowrap; /*no escaping*/
+    color: white;
+    transition: color 0.5s ease, transform 0.5s ease;
+}
+
+#services .section-content table td:nth-child(1) {
+    text-align: left;
+    overflow: hidden; /* hides the dots when overflow */
+    font-weight: bold;
+}
+
+/* adds the dotted line after the service name (btw this was way harder than i thought it would be) */
+#services .section-content table td:nth-child(1)::after {
+    content: ".........................................................................................................";
+}
+
+#services .section-content tr:not(:last-child) td:nth-child(2)::before {
+    content: "$";
+}
+
+#services .section-content table td:nth-child(2) {
+    width: 1px;
+    text-align: right;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  CONTACT
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#contact {
+    background-image: url("../img/bg/bg-contact.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+#contact .heading h2 {
+    color: lightgreen;
+}
+
+#contact .heading span {
+    color: white;
+}
+
+/* uses grid to arrange the elements in the way i need */
+#contact .section-content {
+    display: grid;
+    grid-template-areas: "crack quote"
+                         "crack form";
+    max-width: 1200px;
+}
+
+#contact .section-content img {
+    grid-area: crack;
+    height: 400px;
+    background-color: white;
+    padding: 5px;
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+}
+
+#contact .section-content .contact-form {
+    grid-area: form;
+}
+
+#contact blockquote {
+    grid-area: quote;
+    background: white;
+    opacity: 0.8;
+    margin: 0;
+    padding: 5px 0 30px 20px;
+    transition: opacity 0.5s ease;
+}
+
+#contact blockquote:hover,
+#contact img:hover,
+#contact blockquote:hover + img {
+    opacity: 1;
+}
+
+#contact blockquote p, blockquote .name, blockquote .references {
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+
+#contact blockquote p, blockquote .name {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+#contact .contact-form {
+    margin: 40px;
+}
+
+#contact .contact-form input,
+#contact .contact-form select,
+#contact .contact-form textarea {
+    opacity: 0.8;
+    padding: 10px;
+    border: 5px solid white;
+    font-size: 16px;
+}
+
+#contact .contact-form textarea {
+    background-color: #cce6c2;
+}
+
+#contact .contact-form input[name="text"],
+#contact .contact-form input[name="email"],
+#contact .contact-form input[name="date"],
+#contact .contact-form input[name="persons"] {
+    background-color: #f7ced3;
+}
+
+#contact .contact-form input[type="submit"] {
+    width: 25%;
+    margin: 0 auto;
+    display: block;
+}
+
+#contact .contact-form input,
+#contact .contact-form select,
+#contact .contact-form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+#contact .contact-form input[type="submit"] {
+    background-color: #f7ced3;
+    padding: 10px;
+    border: 5px solid lightpink;
+}
+
+/* changes the color when form elements are valid */
+#contact .contact-form input[name="text"]:valid,
+#contact .contact-form input[name="email"]:valid,
+#contact .contact-form input[name="date"]:valid,
+#contact .contact-form input[name="persons"]:valid,
+#contact .contact-form select:valid {
+    background-color: #cce6c2;
+}
+
+/* changes the submit button color when the whole form is valid */
+#contact .contact-form form:valid input {
+    background-color: #cce6c2;
+    border-color: lightgreen;
+}
+
+/* gray-out when heyoooo is displayed */
+#contact .contact-form input[type="submit"]:disabled {
+    background-color: white;
+    border-color: gray;
+    color: black;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  FOOTER
+
+    -------------------------------------------------------------------------------------------------------
+*/
+footer {
+    padding: 80px 20px 60px 20px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* adds the image to the middle of the footer */
+footer::after {
+    content: "";
+    position: absolute;
+    margin: 0 auto;
+    width: 25%;
+    height: 100px;
+    top: 30%;
+    left: 40%;
+    background-image: url('../img/custom/gang.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+footer .section-content a {
+    text-decoration: none;
+    color: black;
+    transition: color 0.5s ease;
+}
+
+footer .section-content a:hover {
+    color: green;
+}
+
+footer .section-content span:nth-child(2) {
+    float: right;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  HEYOOOO
+
+    -------------------------------------------------------------------------------------------------------
+*/
+
+/* flex to arrange it, hidden initially, shown only when .open */
+#heyoooo {
+    display: flex;
+    font-family: 'Textile', sans-serif;
+    background-color: white;
+    width: 300px;
+    height: 120px;
+    margin-top: 80px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    box-shadow: 0 0 15px rgba(0, 128, 0, 1);
+    visibility: hidden;
+    opacity: 0;
+    align-items: center;
+    position: fixed;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+#heyoooo.open {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 40px;
+    transition: opacity 1s ease, margin-top 1s ease;
+}
+
+#heyoooo img {
+    height: 80px;
+    margin-left: 30px;
+}
+
+#heyoooo div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+#heyoooo span {
+    margin: 0;
+}
+
+#heyoooo span:nth-child(1) {
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 34px;
+}
+
+#heyoooo span:nth-child(2) {
+    color: green;
+}
+/*
+    -------------------------------------------------------------------------------------------------------
+
+                                                  SWEATSHOP
+
+    -------------------------------------------------------------------------------------------------------
+*/
+#sweatshop {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 10px;
+    padding: 15px 20px;
+    border: 2px solid green;
+    background-color: white;
+    opacity: 0.5;
+    z-index: 1000;
+    transition: background-color 0.5s ease;
+}
+
+#sweatshop i {
+    color: green;
+    transition: color 0.5s ease;
+}
+
+html.scrolled #sweatshop {
+    display: block;
+}
+
+html.scrolled #sweatshop:hover {
+    background-color: green;
+}
+
+html.scrolled #sweatshop:hover i {
+    color: white;
+}
+
+/* Bird law in this country is not governed by reason. */
